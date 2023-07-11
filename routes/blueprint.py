@@ -5,7 +5,7 @@ import os, zipfile
 from PIL import Image, ImageChops
 
 bp=Blueprint('blueprint', __name__)
-tmp_folder_name="tmp"
+tmp_folder_name="memory"
 
 @bp.route('/')
 @bp.route('/img_playground')
