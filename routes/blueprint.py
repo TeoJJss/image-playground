@@ -5,9 +5,12 @@ import os, zipfile
 from PIL import Image, ImageChops
 
 bp=Blueprint('blueprint', __name__)
-tmp_folder_name="memory"
+tmp_folder_name="/tmp"
 
 @bp.route('/')
+def nothing():
+    return redirect(url_for('blueprint.index'))
+
 @bp.route('/img_playground')
 def index():
     return render_template('index.html', title="HomePage")
