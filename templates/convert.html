@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Upload a PDF file</h1>
+    <p>This service will convert your PDF files to Images</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        <!-- User select image format -->
+        <label for="image-format">Select Image Format:</label>
+        <select id="image-format" name="image-format" required>
+            <option value="jpg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+        </select>
+        <br>
+        <!-- User upload file -->
+        <input id="file-field" type="file" name="file" accept=".pdf" onchange="handleFileSelect(event)" required>
+        <input id="submit-button" type="submit" value="Convert">
+        <button id="reset-button" type="button" onclick="resetFileInput()">Reset</button>
+    </form>
+    <br>
+    <button id="main-menu">Main Menu</button>
+
+    <script>
+        document.getElementById('submit-button').onclick = function(){
+            var format = document.getElementById('image-format')
+            location.href="{{url_for('blueprint.convert')}}";
+        }
+        document.getElementById('main-menu').onclick = function(){
+            location.href="{{url_for('blueprint.index')}}";
+        }
+
+        function handleFileSelect(event) {
+            // Handle file selection logic here
+            console.log(event.target.files);
+        }
+        function resetFileInput(){
+            document.getElementById('file-field').value = '';
+        }
+    </script>
+{% endblock %}

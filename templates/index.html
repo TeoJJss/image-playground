@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Choose a desired service</h1>
+    <button id="PDFImage-button">PDF to image</button>
+    <br><br>
+    <button id="trimImage-button">trim Image</button>
+
+    <script>
+        document.getElementById('PDFImage-button').onclick = function(){
+            location.href="{{url_for('blueprint.convert')}}"
+        }
+        document.getElementById('trimImage-button').onclick = function(){
+            location.href="{{url_for('blueprint.trim')}}"
+        }
+    </script>
+{% endblock %}
