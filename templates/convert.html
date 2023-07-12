@@ -6,7 +6,7 @@
 
     <form method="POST" enctype="multipart/form-data">
         <!-- User select image format -->
-        <label for="image-format">Select Image Format:</label>
+        <label for="image-format" title="Choose a desired output image format">Select Image Format:</label>
         <select id="image-format" name="image-format" required>
             <option value="jpg">JPG</option>
             <option value="png">PNG</option>
@@ -14,28 +14,14 @@
         </select>
         <br>
         <!-- User upload file -->
-        <input id="file-field" type="file" name="file" accept=".pdf" onchange="handleFileSelect(event)" required>
-        <input id="submit-button" type="submit" value="Convert">
-        <button id="reset-button" type="button" onclick="resetFileInput()">Reset</button>
+        <input id="file-field" type="file" title="Select a PDF" name="file" accept=".pdf" onchange="handleFileSelect(event)" required>
+        <input id="submit-button" title="Submit for conversion" type="submit" value="Convert">
+        <button id="reset-button" title="Clear" type="button" onclick="resetFileInput()">Reset</button>
     </form>
     <br>
-    <button id="main-menu">Main Menu</button>
+    <button id="main-menu" title="Return back to home page">Main Menu</button>
 
-    <script>
-        document.getElementById('submit-button').onclick = function(){
-            var format = document.getElementById('image-format')
-            location.href="{{url_for('blueprint.convert')}}";
-        }
-        document.getElementById('main-menu').onclick = function(){
-            location.href="{{url_for('blueprint.index')}}";
-        }
+    <script type="text/javascript" src="{{ url_for('static', filename='convert.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='button.js') }}"></script>
 
-        function handleFileSelect(event) {
-            // Handle file selection logic here
-            console.log(event.target.files);
-        }
-        function resetFileInput(){
-            document.getElementById('file-field').value = '';
-        }
-    </script>
 {% endblock %}

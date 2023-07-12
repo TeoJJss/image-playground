@@ -7,26 +7,11 @@
     <form method="POST" enctype="multipart/form-data">
         <!-- User upload file -->
         <input id="file-field" type="file" name="file" accept=".png, .jpg, .jpeg" onchange="handleFileSelect(event)" required>
-        <input id="trim-button" type="submit" value="Trim">
-        <button id="reset-button" type="button" onclick="resetFileInput()">Reset</button>
+        <input id="trim-button" type="submit" title="Submit image to be trimmed" value="Trim">
+        <button id="reset-button" type="button" title="Clear" onclick="resetFileInput()">Reset</button>
     </form>
     <br>
     <button id="main-menu">Main Menu</button>
-    <script>
-        document.getElementById('main-menu').onclick = function(){
-            location.href="{{url_for('blueprint.index')}}";
-        }
-        document.getElementById('trim-button').onclick = function(){
-            location.href="{{url_for('blueprint.trim')}}";
-        }
-
-
-        function handleFileSelect(event) {
-            // Handle file selection logic here
-            console.log(event.target.files);
-        }
-        function resetFileInput(){
-            document.getElementById('file-field').value = '';
-        }
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='trim.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='button.js') }}"></script>
 {% endblock %}
